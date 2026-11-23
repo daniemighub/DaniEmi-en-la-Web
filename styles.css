@@ -47,7 +47,7 @@ body {
   height: 75vh;
   margin-left: calc(50% - 50vw);
   overflow: hidden;
-  background: #101d43;
+  background: #010101;
 }
 
 .video-area video {
