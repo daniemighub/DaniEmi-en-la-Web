@@ -47,9 +47,13 @@ body {
   height: 75vh;
   margin-left: calc(50% - 50vw);
   overflow: hidden;
+<<<<<<< HEAD
   background: #010101;
   display: flex;
   justify-content: flex-start;
+=======
+  background: #101d43;
+>>>>>>> parent of 288d30e... Update styles.css
 }
 
 .video-area video {
