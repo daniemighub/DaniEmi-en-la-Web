@@ -1,7 +1,14 @@
 
 @font-face {
-  font-family: "NeueHaasGroteskRoman";
-  src: url("fonts/NeueHaasDisplayRoman.ttf") format("truetype");
+  font-family: "NeueHaasGroteskMedium";
+  src: url("fonts/NeueHaasDisplayMedium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face{
+  font-family: "Neue Montreal Book";
+  src: url("fonts/PPNeueMontrealText-Book.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
 }
@@ -28,7 +35,7 @@ html {
 body {
   background: #010101;
   color: #f1eee8;
-  font-family: "NeueHaasGroteskRoman", sans-serif;
+  font-family: "Neue Montreal Book", sans-serif;
   overflow-x: hidden;
 }
 
@@ -112,7 +119,7 @@ body {
   font-family: "DrukWideHeavy", sans-serif;
   font-size: 45px;
   line-height: 0.85;
-  letter-spacing: -2px;
+  letter-spacing: 1.5px;
   font-weight: 400;
   text-align: center;
   margin: 0;
@@ -128,7 +135,7 @@ h1 + p {
 }
 
 p {
-  font-family: "NeueHaasGroteskRoman", sans-serif;
+  font-family: "Neue Montreal Book", sans-serif;
   max-width: 500px;
   font-size: 15px;
   margin-left: 10px;
