@@ -1,0 +1,220 @@
+
+@font-face {
+  font-family: "NeueHaasGroteskRoman";
+  src: url("fonts/NeueHaasDisplayRoman.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DrukWideHeavy";
+  src: url("fonts/DrukWide-Heavy.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* RESET */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #010101;
+  color: #f1eee8;
+  font-family: "NeueHaasGroteskRoman", sans-serif;
+  overflow-x: hidden;
+}
+
+/* VIDEO */
+
+.video-area {
+  position: relative;
+  width: 100vw;
+  height: 75vh;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+  background: #101d43;
+}
+
+.video-area video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.video-area::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 35%,
+    rgba(16, 29, 67, 0.25) 60%,
+    #010101 100%
+  );
+
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 30%,
+    black 85%
+  );
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 30%,
+    black 85%
+  );
+
+  pointer-events: none;
+}
+
+/* CONTENIDO */
+
+.hero {
+  position: relative;
+  min-height: 250vh;
+  padding: 40px 60px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+/* TITULO */
+
+.title-space {
+  width: 100%;
+  height: 25px;
+  position: sticky;
+  top: 18px;
+  align-self: stretch;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+}
+
+.title-space h1 {
+  position: relative;
+  width: 100%;
+  font-family: "DrukWideHeavy", sans-serif;
+  font-size: 45px;
+  line-height: 0.85;
+  letter-spacing: -2px;
+  font-weight: 400;
+  text-align: center;
+  margin: 0;
+  transform-origin: center top;
+  will-change: transform;
+}
+
+/* TEXTOS */
+
+h1 + p {
+  margin-top: 0;
+  transform: none;
+}
+
+p {
+  font-family: "NeueHaasGroteskRoman", sans-serif;
+  max-width: 500px;
+  font-size: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  letter-spacing: -0.2px;
+}
+
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+/* MÓVIL */
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 0px 24px 24px;
+  }
+
+  .title-space h1 {
+    font-size: 45px;
+    letter-spacing: -2px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .video-area {
+    height: 70vh;
+  }
+
+/* DESENFOQUE PROGRESIVO SUPERIOR */
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  z-index: 90;
+  pointer-events: none;
+
+  opacity: 0;
+  transition: opacity 0.5s ease;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.4) 45%,
+    transparent 100%
+  );
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    transparent 100%
+  );
+
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    transparent 100%
+  );
+}
+
+body.show-top-glass::before {
+  opacity: 1;
+}
+.separator {
+  width: 100%;
+  height: 2px;
+  background: rgba(241, 238, 232, 0.3);
+  margin: 25px, 25px;
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin: 20px 0;
+  border-radius: 0;
+}
