@@ -1,4 +1,3 @@
-
 const title = document.querySelector(".title-space h1");
 const titleSpace = document.querySelector(".title-space");
 
@@ -51,7 +50,6 @@ window.addEventListener("resize", () => {
   measureTitle();
   requestAnimation();
 });
-
 
 const videoArea = document.querySelector(".video-area");
 

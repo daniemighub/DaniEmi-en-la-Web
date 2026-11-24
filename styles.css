@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: "NeueHaasGroteskMedium";
   src: url("fonts/NeueHaasDisplayMedium.ttf") format("truetype");
@@ -6,11 +5,18 @@
   font-style: normal;
 }
 
-@font-face{
+@font-face {
   font-family: "Neue Montreal Book";
   src: url("fonts/PPNeueMontrealText-Book.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
+}
+
+@font-face {
+  font-family: "PicNic";
+  src: url("fonts/PicNic-Regular.otf") format("opentype");
+ font-weight: 400;
+ font-style: normal;
 }
 
 @font-face {
@@ -19,8 +25,6 @@
   font-weight: 400;
   font-style: normal;
 }
-
-/* RESET */
 
 * {
   box-sizing: border-box;
@@ -47,7 +51,7 @@ body {
   height: 75vh;
   margin-left: calc(50% - 50vw);
   overflow: hidden;
-  background: #101d43;
+  background: #010101;
 }
 
 .video-area video {
@@ -68,22 +72,18 @@ body {
     rgba(16, 29, 67, 0.25) 60%,
     #010101 100%
   );
-
   -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
-
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 30%,
     black 85%
   );
-
   mask-image: linear-gradient(
     to bottom,
     transparent 30%,
     black 85%
   );
-
   pointer-events: none;
 }
 
@@ -119,7 +119,7 @@ body {
   font-family: "DrukWideHeavy", sans-serif;
   font-size: 45px;
   line-height: 0.85;
-  letter-spacing: 1.5px;
+  letter-spacing: -2px;
   font-weight: 400;
   text-align: center;
   margin: 0;
@@ -128,6 +128,14 @@ body {
 }
 
 /* TEXTOS */
+
+h2 {
+  font-family: "DrukWideHeavy", sans-serif;
+  font- size: 21px;
+  margin-left: 10px;
+  margin-right: 10px
+  letter-spacing: -2px;
+}
 
 h1 + p {
   margin-top: 0;
@@ -168,6 +176,7 @@ p {
   .video-area {
     height: 70vh;
   }
+}
 
 /* DESENFOQUE PROGRESIVO SUPERIOR */
 
@@ -180,26 +189,21 @@ body::before {
   height: 180px;
   z-index: 90;
   pointer-events: none;
-
   opacity: 0;
   transition: opacity 0.5s ease;
-
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.85) 0%,
     rgba(0, 0, 0, 0.4) 45%,
     transparent 100%
   );
-
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-
   -webkit-mask-image: linear-gradient(
     to bottom,
     black 0%,
     transparent 100%
   );
-
   mask-image: linear-gradient(
     to bottom,
     black 0%,
@@ -210,11 +214,12 @@ body::before {
 body.show-top-glass::before {
   opacity: 1;
 }
+
 .separator {
   width: 100%;
   height: 2px;
   background: rgba(241, 238, 232, 0.3);
-  margin: 25px, 25px;
+  margin: 25px 25px;
 }
 
 .photo {
