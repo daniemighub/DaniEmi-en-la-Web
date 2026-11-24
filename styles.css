@@ -47,19 +47,13 @@ body {
   height: 75vh;
   margin-left: calc(50% - 50vw);
   overflow: hidden;
-<<<<<<< HEAD
-  background: #010101;
-  display: flex;
-  justify-content: flex-start;
-=======
   background: #101d43;
->>>>>>> parent of 288d30e... Update styles.css
 }
 
 .video-area video {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
   pointer-events: none;
 }
@@ -157,7 +151,7 @@ p {
 
 /* MÓVIL */
 
-@media (max-width: 100px) {
+@media (max-width: 600px) {
   .hero {
     padding: 0px 24px 24px;
   }
@@ -226,18 +220,8 @@ body.show-top-glass::before {
 .photo {
   display: block;
   width: 100%;
-  max-width: 50px;
+  max-width: 500px;
   height: auto;
-
-
-
-
-
-
-
-
-
-  
   margin: 20px 0;
   border-radius: 0;
 }
