@@ -26,6 +26,12 @@
   font-style: normal;
 }
 
+
+
+/* =================================
+   CONFIGURACIÓN GENERAL
+================================= */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -43,10 +49,13 @@ body {
   overflow-x: hidden;
 }
 
-/* VIDEO */
+/* =================================
+   FOTOGRAFÍA PRINCIPAL
+================================= */
 
 .video-area {
   position: relative;
+  isolation: isolate;
   width: 100vw;
   height: 75vh;
   margin-left: calc(50% - 50vw);
@@ -55,44 +64,100 @@ body {
 }
 
 .video-area video {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  pointer-events: none;
+  object-position: center;
+  transform: scale(1.05);
+  display: block;
 }
 
-.video-area::after {
-  content: "";
+.progressive-blur-container {
+  position: absolute;
+  inset: auto 0 0;
+  height: 35%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.progressive-blur-container .blur-filter {
+  position: absolute;
+  inset: 0;
+}
+
+/* Capas de desenfoque */
+
+.progressive-blur-container .blur-filter:nth-child(1) {
+  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(1px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, transparent 45%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 25%, transparent 45%);
+}
+
+.progressive-blur-container .blur-filter:nth-child(2) {
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 10%, black 35%, transparent 55%);
+  mask-image: linear-gradient(to bottom, transparent 10%, black 35%, transparent 55%);
+}
+
+.progressive-blur-container .blur-filter:nth-child(3) {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 20%, black 45%, transparent 65%);
+  mask-image: linear-gradient(to bottom, transparent 20%, black 45%, transparent 65%);
+}
+
+.progressive-blur-container .blur-filter:nth-child(4) {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 30%, black 55%, transparent 75%);
+  mask-image: linear-gradient(to bottom, transparent 30%, black 55%, transparent 75%);
+}
+
+.progressive-blur-container .blur-filter:nth-child(5) {
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 40%, black 65%, transparent 85%);
+  mask-image: linear-gradient(to bottom, transparent 40%, black 65%, transparent 85%);
+}
+
+.progressive-blur-container .blur-filter:nth-child(6) {
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 55%, black 80%);
+  mask-image: linear-gradient(to bottom, transparent 55%, black 80%);
+}
+
+.progressive-blur-container .blur-filter:nth-child(7) {
+  -webkit-backdrop-filter: blur(64px);
+  backdrop-filter: blur(64px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 65%, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 65%, black 100%);
+}
+
+/* Oscurecimiento inferior */
+
+.progressive-blur-container .gradient {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    transparent 35%,
-    rgba(16, 29, 67, 0.25) 60%,
+    transparent 0%,
+    rgba(1, 1, 1, 0.35) 55%,
     #010101 100%
   );
-  -webkit-backdrop-filter: blur(18px);
-  backdrop-filter: blur(18px);
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 30%,
-    black 85%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 30%,
-    black 85%
-  );
-  pointer-events: none;
 }
-
-/* CONTENIDO */
+/* =================================
+   CONTENIDO
+================================= */
 
 .hero {
   position: relative;
   min-height: 250vh;
-  padding: 40px 60px 60px;
+  padding: 0 60px 60px;
+  margin-top: -80px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -100,15 +165,17 @@ body {
   gap: 15px;
 }
 
-/* TITULO */
+/* =================================
+   TÍTULO
+================================= */
 
 .title-space {
-  width: 100%;
-  height: 25px;
   position: sticky;
   top: 18px;
+  z-index: 200;
+  width: 100%;
+  height: 25px;
   align-self: stretch;
-  z-index: 100;
   display: flex;
   justify-content: center;
 }
@@ -127,13 +194,15 @@ body {
   will-change: transform;
 }
 
-/* TEXTOS */
+/* =================================
+   TEXTOS
+================================= */
 
 h2 {
   font-family: "DrukWideHeavy", sans-serif;
-  font- size: 21px;
+  font-size: 21px;
   margin-left: 10px;
-  margin-right: 10px
+  margin-right: 10px;
   letter-spacing: -2px;
 }
 
@@ -157,28 +226,26 @@ p {
   text-transform: uppercase;
 }
 
-/* MÓVIL */
+/* =================================
+   SEPARADOR Y FOTOGRAFÍAS
+================================= */
 
-@media (max-width: 600px) {
-  .hero {
-    padding: 0px 24px 24px;
-  }
-
-  .title-space h1 {
-    font-size: 45px;
-    letter-spacing: -2px;
-  }
-
-  p {
-    font-size: 15px;
-  }
-
-  .video-area {
-    height: 70vh;
-  }
+.photo {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin: 20px 0;
+  border-radius: 0;
 }
 
-/* DESENFOQUE PROGRESIVO SUPERIOR */
+/* =================================
+   CRISTAL SUPERIOR
+================================= */
+
+/* =================================
+   CRISTAL SUPERIOR
+================================= */
 
 body::before {
   content: "";
@@ -191,14 +258,17 @@ body::before {
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.5s ease;
+
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.85) 0%,
     rgba(0, 0, 0, 0.4) 45%,
     transparent 100%
   );
+
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+
   -webkit-mask-image: linear-gradient(
     to bottom,
     black 0%,
@@ -214,19 +284,26 @@ body::before {
 body.show-top-glass::before {
   opacity: 1;
 }
+/* =================================
+   MÓVIL
+================================= */
 
-.separator {
-  width: 100%;
-  height: 2px;
-  background: rgba(241, 238, 232, 0.3);
-  margin: 25px 25px;
-}
+@media (max-width: 600px) {
+  .video-area {
+    height: 70vh;
+  }
 
-.photo {
-  display: block;
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  margin: 20px 0;
-  border-radius: 0;
+  .hero {
+    padding: 0 24px 24px;
+    margin-top: -80px;
+  }
+
+  .title-space h1 {
+    font-size: 45px;
+    letter-spacing: -2px;
+  }
+
+  p {
+    font-size: 15px;
+  }
 }

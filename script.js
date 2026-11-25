@@ -51,17 +51,22 @@ window.addEventListener("resize", () => {
   requestAnimation();
 });
 
-const videoArea = document.querySelector(".video-area");
+// DESENFOQUE SUPERIOR
 
-const glassObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    document.body.classList.toggle(
-      "show-top-glass",
-      !entry.isIntersecting
-    );
-  });
-}, {
-  threshold: 0
+function updateGlass() {
+  const hero = document.querySelector(".hero");
+  const rect = hero.getBoundingClientRect();
+
+  document.body.classList.toggle(
+    "show-top-glass",
+    rect.top <= 120
+  );
+}
+
+window.addEventListener("scroll", updateGlass, {
+  passive: true
 });
 
-glassObserver.observe(videoArea);
+window.addEventListener("resize", updateGlass);
+
+updateGlass();
